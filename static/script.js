@@ -170,7 +170,17 @@ resetChatButton.addEventListener("click", function (event) {
 		.then((response) => {
 			if (!response.error) {
 				// localStorage.removeItem("chat");
-				chat.innerHTML = "";
+				chat.innerHTML = `
+                <div class="chat-service-message-container">
+                    <div class="chat-service-message">
+                        <h2 class="chat-service-title">RuStore Bot</h2>
+                        <p class="chat-service-text">
+                            Привет! Я являюсь Универсальным Помощником по документации RuStore! Если у вас возникли
+                            вопросы, пожалуйста, задайте мне их и я отвечу!
+
+                        </p>
+                    </div>
+                </div>`;
 			}
 		})
 		.catch((error) => {

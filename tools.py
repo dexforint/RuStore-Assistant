@@ -3,13 +3,11 @@ import torch
 import pickle
 import requests
 
-# from faster_whisper import WhisperModel
 from transformers import AutoTokenizer, AutoModel
 
-# model_size = "large-v3"
 
-# # Run on GPU with FP16
-# asr_model = WhisperModel(model_size, device="cuda", compute_type="float16")
+# !! from faster_whisper import WhisperModel
+# !!asr_model = WhisperModel("large-v3", device="cuda", compute_type="float16")
 
 
 device = "cuda" if torch.cuda.is_available() else "cpu"
@@ -89,7 +87,7 @@ def get_prompt(query: str, target_chunks: list, history: str = None):
     return prompt
 
 
-sys_prompt = """Ты — умный ассистент. Твоя задача - полноценно ответить на вопрос пользователя, опираясь на предоставленные данные. В качестве входных данных тебе будут служить: вопрос пользователя, история переписки с пользователем и найденные материалы из справочной базы данных. Дай ответ исключительно в формате HTML без использования тегов <html>, <head>, <body>, а с использованием: <p>, <div>, <a>, <img>, <span>, <b>, <i>. Приложи ссылки на источники справочных данных. Если ответ на вопрос пользователя отсутствует в справочных данных, то ничего не выдумывай, а так и напиши, что не знаешь ответа на данный вопрос.
+sys_prompt = """Ты — умный ассистент на русском языке. Твоя задача - полноценно ответить на вопрос пользователя, опираясь на предоставленные данные. В качестве входных данных тебе будут служить: вопрос пользователя, история переписки с пользователем и найденные материалы из справочной базы данных. Дай ответ исключительно в формате HTML без использования тегов <html>, <head>, <body>, а с использованием: <p>, <div>, <a>, <img>, <span>, <b>, <i>. Приложи ссылки на источники справочных данных. Если ответ на вопрос пользователя отсутствует в справочных данных, то ничего не выдумывай, а так и напиши, что не знаешь ответа на данный вопрос.
 """
 # Пример запроса пользователя:
 # ```
@@ -126,7 +124,7 @@ def get_answer(prompt: str, temperature=0.6):
     }
 
     json_data = {
-        "model": "Qwen/Qwen2-72B-Instruct",
+        "model": "Qwen/Qwen2-72B-Instruct",  # "Qwen/Qwen2-72B-Instruct",
         "messages": [
             {
                 "role": "user",
@@ -164,9 +162,9 @@ def get_text_from_audio(audio_path: str):
     return query
 
 
-# import easyocr
+# !! import easyocr
 
-# reader = easyocr.Reader(["en", "ru"])
+# !! reader = easyocr.Reader(["en", "ru"])
 
 
 def get_text_from_image(image_path: str):

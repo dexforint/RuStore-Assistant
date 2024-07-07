@@ -31,6 +31,8 @@ history = []
 
 @app.get("/")
 async def main(request: Request):
+    global history
+    history = []
     context = {"request": request}
     return templates.TemplateResponse(name="index.html", context=context)
 
