@@ -1,3 +1,5 @@
+![](assets/image.png)
+
 # Решение задачи умной документации RuStore
 
 Команда: ML Rocks
