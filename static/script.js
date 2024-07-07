@@ -238,22 +238,23 @@ function createMarquee(containerId, images, speed) {
 	};
 
 	// Заполняем контейнер дважды для плавной анимации
-	fillContainer();
-	fillContainer();
+	for (let i = 0; i < 10; i++) {
+		fillContainer();
+	}
 
 	container.appendChild(marqueeContent);
 }
 
-createMarquee("marquee1", images1, 30);
-createMarquee("marquee2", images2, 25);
-createMarquee("marquee3", images3, 20);
+createMarquee("marquee1", images1, 15);
+createMarquee("marquee2", images2, 12);
+createMarquee("marquee3", images3, 10);
 
 // Добавляем keyframes для анимации
 const style = document.createElement("style");
 style.textContent = `
     @keyframes marquee {
-        0% { transform: translateX(0); }
-        100% { transform: translateX(-50%); }
+        0% { transform: translateX(0%); }
+        100% { transform: translateX(-30%); }
     }
 `;
 document.head.appendChild(style);
