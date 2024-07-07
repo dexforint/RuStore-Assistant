@@ -6,8 +6,10 @@ import requests
 from transformers import AutoTokenizer, AutoModel
 
 
-# !! from faster_whisper import WhisperModel
-# !!asr_model = WhisperModel("large-v3", device="cuda", compute_type="float16")
+# from faster_whisper import WhisperModel
+# asr_model = WhisperModel("large-v3", device="cuda", compute_type="float16")
+# import easyocr
+# reader = easyocr.Reader(["en", "ru"])
 
 
 device = "cuda" if torch.cuda.is_available() else "cpu"
@@ -160,11 +162,6 @@ def get_text_from_audio(audio_path: str):
 
     query = " ".join(query)
     return query
-
-
-# !! import easyocr
-
-# !! reader = easyocr.Reader(["en", "ru"])
 
 
 def get_text_from_image(image_path: str):

@@ -5,3 +5,5 @@ accelerate
 fastapi
 requests
 easyocr
+uvicorn
+pydantic
